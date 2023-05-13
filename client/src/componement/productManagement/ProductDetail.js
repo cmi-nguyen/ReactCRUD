@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function ProductDetail() {
-  const [products, setProduct] = useState([]);
   const id = useParams();
+  const [products, setProduct] = useState([]);
   useEffect(() => {
     const getData = async () => {
       let response = await axios.get(
@@ -12,28 +12,27 @@ function ProductDetail() {
       );
       setProduct(response.data);
       console.log(response.data);
-      
     };
     getData();
-  }, [id]);
+  }, []);
   return (
-    
     <div className="container">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="" class="img-fluid rounded-start" alt="product img"></img>
+      
+      <div className="card mb-3">
+        <div className="row g-0">
+          <div className="col-md-4">
+            <img src={products.imgURL} className="img-fluid rounded-start" alt="product img"></img>
           </div>
 
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{products[0].productName}</h5>
-              <p class="card-text">
-                {products[0].description}
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{products.productName}</h5>
+              <p className="card-text">
+                {products.description}
               </p>
-              <p class="card-text">
-                <small class="text-body-secondary">
-                  {products[0].price}
+              <p className="card-text">
+                <small className="text-body-secondary">
+                  {products.price}
                 </small>
               </p>
             </div>
