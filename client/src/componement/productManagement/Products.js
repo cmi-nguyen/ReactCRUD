@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect,  useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Products() {
@@ -14,7 +14,7 @@ function Products() {
       .catch(function (error) {
         console.log(error);
       });
-  }, [products]);
+  },[]);
   const Navigate = useNavigate();
   function GetProductDetail(evt) {
     evt.preventDefault();
@@ -28,7 +28,8 @@ function Products() {
   function DeleteProduct(evt){
     evt.preventDefault();
     const id= evt.target.id;
-    axios.delete(`http://localhost:8080/product/${id}`)
+    axios.delete(`http://localhost:8080/product/${id}`);
+    window.location.href="/product";
   }
   return (
     <div className="container">
